@@ -1,0 +1,12 @@
+source
+https://www.youtube.com/watch?v=3mwFC4SHY-Y&t=77s
+
+date
+2020-09-08
+
+curriculum
+url routing
+dynamic url
+GET and POST
+jinja and templates
+database

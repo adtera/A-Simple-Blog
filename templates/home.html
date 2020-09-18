@@ -1,0 +1,73 @@
+{% extends 'layout.html' %} {% block head %}
+<title>Home</title>
+{% endblock %} {% block body %}
+<h1>All Posts</h1>
+
+<hr />
+<h2>Create New Blog Post:</h2>
+
+<label for="title">Title:</label>
+<input
+  class="form-control"
+  type="text"
+  autocomplete="off"
+  name="title"
+  id="title"
+  placeholder="Enter Title"
+  aria-label="Enter Title"
+/>
+<br />
+<label for="author">Author:</label>
+<input
+  class="form-control"
+  type="text"
+  autocomplete="off"
+  name="author"
+  id="author"
+  placeholder="Enter Author"
+  aria-label="Enter Author"
+/>
+<br />
+<label for="content">Post:</label>
+<textarea
+  class="form-control"
+  type="text"
+  autocomplete="off"
+  name="content"
+  id="content"
+  placeholder="Enter Content"
+  aria-label="Enter Content"
+  rows="3"
+></textarea>
+<br />
+<button class="btn btn-success" type="submit" id="submit">Submit</button>
+<hr />
+
+<div id="post-container"></div>
+
+<script>
+  let title = document.querySelector("#title");
+  let author = document.querySelector("#author");
+  let content = document.querySelector("#content");
+  let button = document.querySelector("#submit");
+  let posts = document.querySelector("#post-container");
+  $.get("/initposts", function (data) {
+    posts.innerHTML = data;
+  });
+  button.onclick = function () {
+    $.get("/addposts?title=" + title.value + "&author=" + author.value + "&content=" + content.value, function (data) {
+      posts.innerHTML = data;
+      title.value = "";
+      author.value = "";
+      content.value = "";
+    });
+  };
+  function deletePost(e) {
+    console.log(e.getAttribute("data-link"));
+    $.get(e.getAttribute("data-link"), function (data) {
+      posts.innerHTML = data;
+    });
+  }
+</script>
+
+{% endblock %}

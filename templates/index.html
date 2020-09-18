@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% block head %}
+<title>Home</title>
+{% endblock %} {% block body %}
+<br />
+<h1>Hello, wanderer!</h1>
+<br />
+
+<main role="main">
+  <div class="jumbotron">
+    <div class="col-sm-8 mx-auto">
+      <h1>Welcome</h1>
+      <p>Welcome to the blog of Tom Bombadil. You must have taken a wrong turn, my friend.</p>
+      <p>
+        “Old Tom Bombadil is a merry fellow, Bright blue his jacket is, and his boots are yellow. None has ever caught
+        him yet, for Tom, he is the Master: His songs are stronger songs, and his feet are faster.” ― J.R.R. Tolkien,
+        The Fellowship of the Ring
+      </p>
+
+      <p>
+        <a class="btn btn-primary" href="/home" role="button">Lets go to Posts &raquo;</a>
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock %}
